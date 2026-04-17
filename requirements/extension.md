@@ -1,76 +1,71 @@
-# AiTerm: Full Project Requirements
+# Requirements
 
-## 1. Translation Functionality
+## Feature: Translation
 
 ### Language Selection
-* **UI Placement:** Language selection buttons are located below the text input and translation output blocks.
-* **Selection Menu:** * Clicking a language button opens a selection window with available languages.
-    * Languages are displayed in a single column with a vertical scrollbar.
-    * The window features a close button (X icon).
-    * **Visual Feedback:** The close button changes style on hover (white icon with border).
-    * **Auto-Close:** The selection window closes automatically once a language is selected.
+* Below the text input and translation blocks – there must be language selection buttons.
 
-### Input & Output Logic
-* **Manual Input:** Users can type or paste text into the input field.
-* **Auto-Detection:** The source language is detected automatically after text entry.
-* **Manual Override:** Users can manually change the detected source language.
-* **Translation Display:** Translated text appears in the designated output field once the process is complete.
+### Text Input Block
+* User can enter text manually.
+* Language is determined automatically after text entry.
+* User can manually change the detected language.
 
-### Interaction Elements
-* **Translate Button:**
-    * **Action:** Triggers the translation and fetches additional data.
-    * **Visuals:** The button is red.
-    * **States:** The button only exists/is visible during the "processing/thinking" state.
-* **Cancel Button:**
-    * **Context:** During the translation process, a "Cancel" button replaces the "Language Swap" button.
-* **Language Swap (Reverse) Button:**
-    * **Action:** Swaps the source and target languages.
-    * **Data Handling:** The text content in both fields is also swapped.
+### Translation Block
+* User must choose a translation language.
+* Translated text is displayed in the corresponding field.
 
----
+### Translation Button
+* Clicking triggers the text translation.
+* Translation must be displayed in the corresponding translation field.
+* While waiting for the translation, a cancel button should appear instead of the swap button.
+* The translation button must be red.
+* The translation button should exist only during "thinking" (processing).
 
-## 2. Advanced Linguistic Analysis (Linguistic Insights)
+### Language Swap Button
+* The button should swap the input and output languages.
+* Text also swaps places.
 
-After translation, the following data must be displayed below the main blocks:
-* **CEFR Level:** Proficiency level (A1 to C2).
-* **Usage Frequency:** A scale from 1 to 10.
-* **Contextual Data:** Synonyms, Examples, and Dictionary Explanations.
+### Language Selection Window
+* After clicking, a window with a choice of available languages should appear.
+* The window must have a close button (cross icon).
+* Languages should be arranged as a column and have vertical scrolling with a scrollbar.
 
-### Interaction with Insights
-* **Display Format:** Examples, Synonyms, and Explanations are placed in separate UI blocks.
-* **Navigation:** Users can switch between these blocks using navigation arrows (Left/Right).
-* **Translation of Insights:** Users can translate the provided examples/synonyms into either the Input or Output language by clicking the respective language flag.
+### Additional Information
+* The following information should appear below after translation:
+    * Language level (A1-C2).
+    * Usage level (1-10).
+    * Examples.
+    * Synonyms.
+    * Explanation.
+* User must be able to translate the received information into 2 languages (Input language, output language).
+* User can translate the information by clicking on the corresponding flag (Input language, output language).
+* Examples, synonyms, and explanations should be in separate blocks.
+* Examples, synonyms, and explanations must switch when the corresponding button is pressed (left arrow, right arrow).
 
----
+### Animations
+* The translation button must have a feedback animation upon clicking (Blue outline, moving slightly upwards).
+* When hovering over the language selection button – buttons must have feedback (Darker color).
+* The language selection window should slide out smoothly when the corresponding buttons are pressed.
+* When clicking the button to select the **Input language** – the window should slide from left to right and close from right to left.
+* When clicking the button to select the **output language** – the window should slide from right to left and close from left to right.
+* When hovering over a language, the language should be highlighted.
+* When a language is selected - the window should close according to the language selection button.
+* When hovering over the cross icon of the language selection window – the cross must have feedback (white cross with an outline).
+* The following information must appear and disappear exclusively with a smooth animation:
+    * Language level (A1-C2) – count up from A1 with an end animation (fast increase with a blue background).
+    * Usage level (1-10) - count up from 1 with an end animation (fast increase with a blue background) and a circle fill animation.
+    * Examples (Soft appearance).
+    * Synonyms (Soft appearance).
+    * Explanation (Soft appearance).
+* Examples, synonyms, and explanations must have an animation when switching (Flipping animation).
+* The left and right arrow buttons must have feedback and click animations (feedback: button fill; animation: button tremor).
 
-## 3. UI/UX & Animations
+### Caching
+* Previously translated text must be stored locally.
+* Translation of text that has already been translated should happen instantly.
+* The translation should be stored locally in full (all provided information).
 
-### Button Effects
-* **Translate Button:** Response animation on click (blue outline and slight upward movement).
-* **Language Selection Buttons:** Hover feedback (darker background shade).
-* **Navigation Arrows:** Hover feedback (background fill) and click animation (vibration/shake effect).
-* **Language List:** Hover highlighting for individual language items.
-
-### Window & Content Animations
-* **Selection Window:** Smooth "slide-in" effect.
-    * **Input Language Window:** Slides from Left to Right; closes from Right to Left.
-    * **Output Language Window:** Slides from Right to Left; closes from Left to Right.
-* **Dynamic Data Rendering:** * **CEFR Level:** Counts up from A1 to the target level, ending with a "pop" animation (quick scale-up with blue background).
-    * **Usage Frequency:** Counts up from 1 to the target value, accompanied by a circular progress fill and a "pop" animation.
-    * **Text Content (Examples/Synonyms/Explanations):** Smooth fade-in appearance.
-    * **Block Switching:** A "sliding page" animation when switching between examples, synonyms, and explanations.
-
----
-
-## 4. Performance & Caching
-
-* **Local Storage:** All translated text and corresponding linguistic data must be cached locally.
-* **Instant Recall:** If a previously translated text is entered again, the translation and all associated information must be displayed instantly from the cache.
-
----
-
-## 5. Error Handling & Validation
-
-* **Missing Target:** Show a notification if the target language is not selected.
-* **Empty State:** The translation process does not trigger if the input field is empty.
-* **Matching Languages:** If the Input and Output languages are identical, only one flag/language icon is displayed to the user.
+### Errors
+* If no translation language is selected — a message is shown.
+* If the text is empty — the translation is not performed.
+* If the Input language and output language match – only one flag with one language is displayed.
