@@ -1,29 +1,27 @@
-# AiTerm: Chrome Extension Requirements
+# AiTerm: Project Requirements
 
-This document outlines the functional and visual requirements for the AiTerm browser extension.
+## 1. Translation Feature
 
----
+### Language Selection
+* Language selection buttons are located below the text input and translation output blocks.
 
-## 1. Main Interface (Popup)
+### Text Input Block
+* **Manual Input:** Users can type or paste text manually.
+* **Auto-Detection:** The source language is detected automatically after text is entered.
+* **Manual Override:** Users can manually change the detected source language.
 
-The popup is the primary interaction point for the user. It must follow a minimalist design with a dark theme and modern UI elements.
+### Translation Output Block
+* **Target Language:** Users must select a target language for translation.
+* **Display:** The translated text appears in the designated output field.
 
-### Translation Module
-* **Input Zone:** A multi-line text area where users can type or paste source text.
-* **Output Zone:** A read-only text area that displays the translated result. This area should have a subtle background distinction to indicate it is non-editable.
-* **Language Selection:** Two dropdown menus positioned below the text zones:
-    * **Left Dropdown:** Source language (Default: Auto-detect).
-    * **Right Dropdown:** Target language (Default: User's preferred language).
+### Interactive Elements
+* **Translate Button:** Initiates the translation process and displays the result in the output field.
+* **Swap Button:** Reverses the source and target languages. The text in both fields is also swapped accordingly.
 
-### AI Analysis Module (Linguistic Insights)
-After a successful translation, the extension must fetch and display the following data from the backend:
-
-| Feature | Description | Range/Format |
-| :--- | :--- | :--- |
-| **CEFR Level** | Difficulty level of the word/phrase | A1, A2, B1, B2, C1, C2 |
-| **Usage Frequency** | How common the word is in daily speech | 1 to 10 scale |
-| **Synonyms** | List of similar words | Comma-separated list |
-| **Examples** | Real-world usage sentences | Numbered list |
-| **Explanation** | Dictionary-style definition | Short paragraph |
+### Error Handling
+* **Missing Language:** Show a notification if no target language is selected.
+* **Empty Input:** Translation is not triggered if the input field is empty.
 
 ---
+## 2. Dictionary & Analysis (To be added)
+...
